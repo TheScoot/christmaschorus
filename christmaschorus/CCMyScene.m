@@ -14,9 +14,14 @@
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
+        //get the coordinates of the scene the same as all the sprites
+        self.anchorPoint = CGPointMake(0.5,0.5);
+
         CCPlayer *drummer = [[CCPlayer alloc] initWithPlayerNamed:@"drummer"];
+        drummer.position = CGPointMake(CGRectGetMidX(self.frame) - drummer.size.width, CGRectGetMidY(self.frame));
         [self addChild:drummer];
         CCPlayer *guitar = [[CCPlayer alloc] initWithPlayerNamed:@"guitar"];
+        guitar.position = CGPointMake(CGRectGetMidX(self.frame) + guitar.size.width, CGRectGetMidY(self.frame));
         [self addChild:guitar];
         
         //start playing the song
