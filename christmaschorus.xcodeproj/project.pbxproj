@@ -18,13 +18,20 @@
 		4AC395031831B53C009991D8 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395011831B53C009991D8 /* Main_iPad.storyboard */; };
 		4AC395061831B53C009991D8 /* CCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC395051831B53C009991D8 /* CCViewController.m */; };
 		4AC395091831B53C009991D8 /* CCMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC395081831B53C009991D8 /* CCMyScene.m */; };
-		4AC3950B1831B53C009991D8 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3950A1831B53C009991D8 /* Spaceship.png */; };
 		4AC3950D1831B53C009991D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3950C1831B53C009991D8 /* Images.xcassets */; };
 		4AC395141831B53C009991D8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC395131831B53C009991D8 /* XCTest.framework */; };
 		4AC395151831B53C009991D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC394EA1831B53C009991D8 /* Foundation.framework */; };
 		4AC395161831B53C009991D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC394EE1831B53C009991D8 /* UIKit.framework */; };
 		4AC3951E1831B53C009991D8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4AC3951C1831B53C009991D8 /* InfoPlist.strings */; };
 		4AC395201831B53C009991D8 /* christmaschorusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC3951F1831B53C009991D8 /* christmaschorusTests.m */; };
+		4AC3952A1831B5AA009991D8 /* GameData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395291831B5AA009991D8 /* GameData.plist */; };
+		4AC3952C1831B891009991D8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC3952B1831B891009991D8 /* AVFoundation.framework */; };
+		4AC3952E1831B89C009991D8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AC3952D1831B89C009991D8 /* AudioToolbox.framework */; };
+		4AC395341831B8D7009991D8 /* drummer.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395301831B8D7009991D8 /* drummer.aif */; };
+		4AC395351831B8D7009991D8 /* guitar.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395311831B8D7009991D8 /* guitar.aif */; };
+		4AC395361831B8D7009991D8 /* PIANO 1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395321831B8D7009991D8 /* PIANO 1.aif */; };
+		4AC395371831B8D7009991D8 /* SHAKER 1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395331831B8D7009991D8 /* SHAKER 1.aif */; };
+		4AC3953A1831C41C009991D8 /* CCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC395391831C41C009991D8 /* CCPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +62,21 @@
 		4AC395051831B53C009991D8 /* CCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCViewController.m; sourceTree = "<group>"; };
 		4AC395071831B53C009991D8 /* CCMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMyScene.h; sourceTree = "<group>"; };
 		4AC395081831B53C009991D8 /* CCMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCMyScene.m; sourceTree = "<group>"; };
-		4AC3950A1831B53C009991D8 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		4AC3950C1831B53C009991D8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4AC395121831B53C009991D8 /* christmaschorusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = christmaschorusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AC395131831B53C009991D8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4AC3951B1831B53C009991D8 /* christmaschorusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "christmaschorusTests-Info.plist"; sourceTree = "<group>"; };
 		4AC3951D1831B53C009991D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4AC3951F1831B53C009991D8 /* christmaschorusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = christmaschorusTests.m; sourceTree = "<group>"; };
+		4AC395291831B5AA009991D8 /* GameData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GameData.plist; sourceTree = "<group>"; };
+		4AC3952B1831B891009991D8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4AC3952D1831B89C009991D8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4AC395301831B8D7009991D8 /* drummer.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = drummer.aif; sourceTree = "<group>"; };
+		4AC395311831B8D7009991D8 /* guitar.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = guitar.aif; sourceTree = "<group>"; };
+		4AC395321831B8D7009991D8 /* PIANO 1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PIANO 1.aif"; sourceTree = "<group>"; };
+		4AC395331831B8D7009991D8 /* SHAKER 1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SHAKER 1.aif"; sourceTree = "<group>"; };
+		4AC395381831C41C009991D8 /* CCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPlayer.h; sourceTree = "<group>"; };
+		4AC395391831C41C009991D8 /* CCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC3952E1831B89C009991D8 /* AudioToolbox.framework in Frameworks */,
+				4AC3952C1831B891009991D8 /* AVFoundation.framework in Frameworks */,
 				4AC394ED1831B53C009991D8 /* CoreGraphics.framework in Frameworks */,
 				4AC394EF1831B53C009991D8 /* UIKit.framework in Frameworks */,
 				4AC394F11831B53C009991D8 /* SpriteKit.framework in Frameworks */,
@@ -111,6 +128,8 @@
 		4AC394E91831B53C009991D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4AC3952D1831B89C009991D8 /* AudioToolbox.framework */,
+				4AC3952B1831B891009991D8 /* AVFoundation.framework */,
 				4AC394EA1831B53C009991D8 /* Foundation.framework */,
 				4AC394EC1831B53C009991D8 /* CoreGraphics.framework */,
 				4AC394EE1831B53C009991D8 /* UIKit.framework */,
@@ -123,6 +142,7 @@
 		4AC394F21831B53C009991D8 /* christmaschorus */ = {
 			isa = PBXGroup;
 			children = (
+				4AC3952F1831B8BC009991D8 /* tracks */,
 				4AC394FB1831B53C009991D8 /* CCAppDelegate.h */,
 				4AC394FC1831B53C009991D8 /* CCAppDelegate.m */,
 				4AC394FE1831B53C009991D8 /* Main_iPhone.storyboard */,
@@ -131,7 +151,9 @@
 				4AC395051831B53C009991D8 /* CCViewController.m */,
 				4AC395071831B53C009991D8 /* CCMyScene.h */,
 				4AC395081831B53C009991D8 /* CCMyScene.m */,
-				4AC3950A1831B53C009991D8 /* Spaceship.png */,
+				4AC395381831C41C009991D8 /* CCPlayer.h */,
+				4AC395391831C41C009991D8 /* CCPlayer.m */,
+				4AC395291831B5AA009991D8 /* GameData.plist */,
 				4AC3950C1831B53C009991D8 /* Images.xcassets */,
 				4AC394F31831B53C009991D8 /* Supporting Files */,
 			);
@@ -165,6 +187,17 @@
 				4AC3951C1831B53C009991D8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4AC3952F1831B8BC009991D8 /* tracks */ = {
+			isa = PBXGroup;
+			children = (
+				4AC395301831B8D7009991D8 /* drummer.aif */,
+				4AC395311831B8D7009991D8 /* guitar.aif */,
+				4AC395321831B8D7009991D8 /* PIANO 1.aif */,
+				4AC395331831B8D7009991D8 /* SHAKER 1.aif */,
+			);
+			name = tracks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,11 +277,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC3950B1831B53C009991D8 /* Spaceship.png in Resources */,
+				4AC395371831B8D7009991D8 /* SHAKER 1.aif in Resources */,
 				4AC3950D1831B53C009991D8 /* Images.xcassets in Resources */,
+				4AC395361831B8D7009991D8 /* PIANO 1.aif in Resources */,
+				4AC3952A1831B5AA009991D8 /* GameData.plist in Resources */,
 				4AC395031831B53C009991D8 /* Main_iPad.storyboard in Resources */,
 				4AC395001831B53C009991D8 /* Main_iPhone.storyboard in Resources */,
 				4AC394F71831B53C009991D8 /* InfoPlist.strings in Resources */,
+				4AC395351831B8D7009991D8 /* guitar.aif in Resources */,
+				4AC395341831B8D7009991D8 /* drummer.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC3953A1831C41C009991D8 /* CCPlayer.m in Sources */,
 				4AC395091831B53C009991D8 /* CCMyScene.m in Sources */,
 				4AC394FD1831B53C009991D8 /* CCAppDelegate.m in Sources */,
 				4AC394F91831B53C009991D8 /* main.m in Sources */,
