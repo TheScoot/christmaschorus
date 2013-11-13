@@ -13,6 +13,6 @@
 
 -(id) initWithPlayerNamed:(NSString *) player;
 -(void) startPlaying;
--(void) toggleVolume;
+-(void) togglePlaying;
 
 @end
