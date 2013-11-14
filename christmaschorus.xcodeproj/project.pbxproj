@@ -34,6 +34,7 @@
 		4AC3953A1831C41C009991D8 /* CCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC395391831C41C009991D8 /* CCPlayer.m */; };
 		D290A5E518334EC600BDA71F /* snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E318334EC600BDA71F /* snowing.sks */; };
 		D290A5E81833502A00BDA71F /* snowflake.png in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E71833502A00BDA71F /* snowflake.png */; };
+		D290A5F018349B2F00BDA71F /* singer.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D290A5EF18349B2F00BDA71F /* singer.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		4AC395391831C41C009991D8 /* CCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPlayer.m; sourceTree = "<group>"; };
 		D290A5E318334EC600BDA71F /* snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = snowing.sks; sourceTree = "<group>"; };
 		D290A5E71833502A00BDA71F /* snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake.png; sourceTree = "<group>"; };
+		D290A5EF18349B2F00BDA71F /* singer.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = singer.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				D290A5E318334EC600BDA71F /* snowing.sks */,
 				4AC395291831B5AA009991D8 /* GameData.plist */,
 				4AC3950C1831B53C009991D8 /* Images.xcassets */,
+				D290A5EF18349B2F00BDA71F /* singer.atlas */,
 				4AC394F31831B53C009991D8 /* Supporting Files */,
 			);
 			path = christmaschorus;
@@ -290,6 +293,7 @@
 				4AC3952A1831B5AA009991D8 /* GameData.plist in Resources */,
 				4AC395031831B53C009991D8 /* Main_iPad.storyboard in Resources */,
 				4AC395001831B53C009991D8 /* Main_iPhone.storyboard in Resources */,
+				D290A5F018349B2F00BDA71F /* singer.atlas in Resources */,
 				4AC394F71831B53C009991D8 /* InfoPlist.strings in Resources */,
 				4AC395351831B8D7009991D8 /* guitar.aif in Resources */,
 				4AC395341831B8D7009991D8 /* drummer.aif in Resources */,

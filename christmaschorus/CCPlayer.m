@@ -10,26 +10,47 @@
 
 @implementation CCPlayer{
     AVAudioPlayer *avPlayer;
-    bool debugMode;
     SKLabelNode *debugLabel;
+    SKAction *playingAction;
+    NSDictionary *playerDict;
+    SKTexture *offTexture;
 }
 
--(id) initWithPlayerNamed:(NSString *) player{
-    self = [super initWithImageNamed:player];
+-(id) initWithDictionary:(NSDictionary *) playerDictionary{
+    self = [super initWithImageNamed:playerDictionary[@"characterName"]];
 
     if(self){
         self.userInteractionEnabled = YES;
-        [self loadAVPlayerForInstument:player];
+
+        playerDict = playerDictionary;
         
+        [self loadAVPlayerForInstument:playerDict[@"characterName"]];
+        
+        offTexture = [SKTexture textureWithImageNamed:[playerDict[@"characterName"] stringByAppendingString:@"-off"]];
+
         debugLabel = [SKLabelNode labelNodeWithFontNamed:@"helvetica"];
+        debugLabel.fontColor = [SKColor blackColor];
         [self addChild:debugLabel];
         
-        self.scale = 0.75f;
+        self.position = CGPointFromString([NSString stringWithFormat:@"{%@}",playerDict[@"position"]]);
+        self.scale = [playerDict[@"scale"] floatValue];
+        self.zPosition = [playerDict[@"zPosition"] integerValue];
 
         self.color = [SKColor blackColor];
         self.colorBlendFactor = 0.0;
 
-        debugMode = YES;
+        //get the popping animation ready
+        if(playerDict[@"playingAnimationAtlas"]){
+            SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:playerDict[@"playingAnimationAtlas"]];
+            NSArray *animationFrames = [NSArray arrayWithArray:playerDict[@"playingAnimationFrames"]];
+            NSMutableArray *frames = [NSMutableArray arrayWithCapacity:animationFrames.count];
+            for (int i=0; i<animationFrames.count; i++) {
+                SKTexture *animationTex = [atlas textureNamed:animationFrames[i]];
+                [frames addObject:animationTex];
+            }
+            //build the animation for playing instrument
+            playingAction = [SKAction repeatActionForever:[SKAction animateWithTextures:frames timePerFrame:0.2]];
+        }
     }
     
     return self;
@@ -50,16 +71,31 @@
 
 -(void) startPlaying{
     [avPlayer play];
+    [self playingAnimation];
+    [avPlayer setVolume:1.0];
 }
 
 -(void) togglePlaying{
     if(avPlayer.volume == 0.0){
         [avPlayer setVolume:1.0];
         self.colorBlendFactor = 0.0;
+        [self playingAnimation];
     } else {
         [avPlayer setVolume:0.0];
-        self.colorBlendFactor = 0.75;
+        self.texture = offTexture;
+        //self.colorBlendFactor = 0.75;
+        [self stopAnimation];
     }
+}
+
+-(void) playingAnimation{
+    if(playingAction){
+        [self runAction:playingAction];
+    }
+}
+
+-(void) stopAnimation{
+    [self removeAllActions];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

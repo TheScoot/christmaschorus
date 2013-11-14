@@ -11,7 +11,7 @@
 
 @interface CCPlayer : SKSpriteNode
 
--(id) initWithPlayerNamed:(NSString *) player;
+-(id) initWithDictionary:(NSDictionary *) playerDictionary;
 -(void) startPlaying;
 -(void) togglePlaying;
 

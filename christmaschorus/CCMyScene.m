@@ -11,6 +11,8 @@
 
 @implementation CCMyScene{
     SKEmitterNode *snowPartical;
+    NSArray *chorusDictArray;
+    NSMutableArray *chorus;
 }
 
 
@@ -24,29 +26,14 @@
         [self addChild:background];
         background.zPosition = 0;
         
-        CCPlayer *drummer = [[CCPlayer alloc] initWithPlayerNamed:@"drummer"];
-        drummer.position = CGPointMake(CGRectGetMidX(self.frame) - drummer.size.width, CGRectGetMidY(self.frame));
-        drummer.zPosition = 1;
-        drummer.position = CGPointMake(110,-63);
-        [self addChild:drummer];
-
-        CCPlayer *guitar = [[CCPlayer alloc] initWithPlayerNamed:@"guitar"];
-        guitar.position = CGPointMake(CGRectGetMidX(self.frame) + guitar.size.width, CGRectGetMidY(self.frame));
-        guitar.zPosition = 1;
-        guitar.position = CGPointMake(-58,-47);
-        [self addChild:guitar];
-
-        CCPlayer *piano = [[CCPlayer alloc] initWithPlayerNamed:@"piano"];
-        piano.position = CGPointMake(CGRectGetMidX(self.frame) + piano.size.width, CGRectGetMidY(self.frame));
-        piano.zPosition = 1;
-        piano.position = CGPointMake(290,-54);
-        [self addChild:piano];
+        //load in the plist data
+        NSDictionary *plistData = [self loadPlistData];
         
-        CCPlayer *singer = [[CCPlayer alloc] initWithPlayerNamed:@"singer"];
-        singer.position = CGPointMake(CGRectGetMidX(self.frame) + singer.size.width, CGRectGetMidY(self.frame));
-        singer.zPosition = 1;
-        singer.position = CGPointMake(-257,-42);
-        [self addChild:singer];
+        //get the list of chorus data
+        chorusDictArray = [NSArray arrayWithArray:[plistData objectForKey:@"chorus"]];
+        
+        //see if we are in debug mode
+        debugMode = [[plistData objectForKey:@"debugmode"] boolValue];
 
         //pre-load partical effects
         NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"snowing" ofType:@"sks"];
@@ -54,17 +41,34 @@
         snowPartical.particlePosition = CGPointMake(0, (self.frame.size.height/2));
         snowPartical.zPosition = 0;
         [self addChild:snowPartical];
+
+        chorus = [NSMutableArray arrayWithCapacity:chorusDictArray.count];
+        for (NSDictionary *chorusData in chorusDictArray) {
+            CCPlayer *newChorus = [[CCPlayer alloc] initWithDictionary:chorusData];
+            //newChorus.zPosition = 1;
+            //newChorus.position = CGPointFromString(chorusData[@"position"]);
+            [self addChild:newChorus];
+            [chorus addObject:newChorus];
+        }
         
         //start playing the song
-        [drummer startPlaying];
-        [guitar startPlaying];
-        [piano startPlaying];
-        [singer startPlaying];
+        for (CCPlayer *chorusPlayer in chorus){
+            [chorusPlayer startPlaying];
+        }
     }
     
     return self;
 }
 
+#pragma mark - helper functions
+-(NSDictionary *) loadPlistData{
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSString *finalPath = [path stringByAppendingPathComponent:@"GameData.plist"];
+    NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+    return plistData;
+}
+
+#pragma mark - touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
