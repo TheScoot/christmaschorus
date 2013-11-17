@@ -17,7 +17,7 @@
 }
 
 -(id) initWithDictionary:(NSDictionary *) playerDictionary{
-    self = [super initWithImageNamed:playerDictionary[@"characterName"]];
+    self = [super initWithImageNamed:[playerDictionary[@"characterName"] stringByAppendingString:@"-off"]];
 
     if(self){
         self.userInteractionEnabled = YES;

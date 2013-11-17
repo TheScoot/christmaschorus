@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "drummer-off.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "drummer.png"
+      "filename" : "drumoff@x2.png"
     }
   ],
   "info" : {

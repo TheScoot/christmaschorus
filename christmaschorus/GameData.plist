@@ -8,11 +8,70 @@
 	<array>
 		<dict>
 			<key>characterName</key>
+			<string>piano</string>
+			<key>position</key>
+			<string>356,-74</string>
+			<key>scale</key>
+			<integer>1</integer>
+			<key>zPosition</key>
+			<string>1</string>
+			<key>playingAnimationAtlas</key>
+			<string>piano</string>
+			<key>playingAnimationFrames</key>
+			<array>
+				<string>playing1</string>
+				<string>playing2</string>
+				<string>playing3</string>
+				<string>playing4</string>
+				<string>playing5</string>
+				<string>playing6</string>
+				<string>playing7</string>
+				<string>playing8</string>
+			</array>
+		</dict>
+		<dict>
+			<key>characterName</key>
+			<string>guitar</string>
+			<key>position</key>
+			<string>124,-82</string>
+			<key>scale</key>
+			<integer>1</integer>
+			<key>zPosition</key>
+			<string>1</string>
+			<key>playingAnimationAtlas</key>
+			<string>guitar</string>
+			<key>playingAnimationFrames</key>
+			<array>
+				<string>playing1</string>
+				<string>playing2</string>
+				<string>playing3</string>
+				<string>playing4</string>
+				<string>playing5</string>
+				<string>playing6</string>
+				<string>playing7</string>
+				<string>playing8</string>
+			</array>
+		</dict>
+		<dict>
+			<key>characterName</key>
+			<string>drummer</string>
+			<key>playingAnimationFrames</key>
+			<array>
+				<string>playing1</string>
+				<string>playing2</string>
+				<string>playing3</string>
+				<string>playing4</string>
+				<string>playing5</string>
+				<string>playing6</string>
+				<string>playing7</string>
+				<string>playing8</string>
+			</array>
+			<key>playingAnimationAtlas</key>
 			<string>drummer</string>
 			<key>position</key>
-			<string>0,-42</string>
+			<string>-134,-91</string>
 			<key>scale</key>
-			<real>0.75</real>
+			<integer>1</integer>
 			<key>zPosition</key>
 			<string>1</string>
 		</dict>
@@ -20,9 +79,9 @@
 			<key>characterName</key>
 			<string>singer</string>
 			<key>position</key>
-			<string>-257,-42</string>
+			<string>-357,-67</string>
 			<key>scale</key>
-			<real>0.75</real>
+			<integer>1</integer>
 			<key>zPosition</key>
 			<string>1</string>
 			<key>playingAnimationAtlas</key>

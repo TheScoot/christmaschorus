@@ -20,7 +20,7 @@
     if (self = [super initWithSize:size]) {
         //get the coordinates of the scene the same as all the sprites
         self.anchorPoint = CGPointMake(0.5,0.5);
-
+        
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
@@ -79,8 +79,5 @@
     }
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
-}
 
 @end

@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "guitaroff.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "guitar .png"
+      "filename" : "guitaroff@x2.png"
     }
   ],
   "info" : {
