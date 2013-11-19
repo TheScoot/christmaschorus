@@ -25,6 +25,21 @@
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
         background.zPosition = 0;
+
+        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"bglights"];
+        NSArray *animationFrames = [NSArray arrayWithObjects:@"lights1.png", @"lights2.png", nil];
+        NSMutableArray *frames = [NSMutableArray arrayWithCapacity:animationFrames.count];
+        for (int i=0; i<animationFrames.count; i++) {
+            SKTexture *animationTex = [atlas textureNamed:animationFrames[i]];
+            [frames addObject:animationTex];
+        }
+        //build the animation for blinking the lights
+        SKAction *lightsBlinking = [SKAction repeatActionForever:[SKAction animateWithTextures:frames timePerFrame:0.5f]];
+        SKSpriteNode *lights = [SKSpriteNode spriteNodeWithImageNamed:@"lightson"];
+        lights.position = CGPointMake(0, ((background.size.height / 2) - lights.size.height / 2));
+        lights.zPosition = 1;
+        [background addChild:lights];
+        [lights runAction:lightsBlinking];
         
         //load in the plist data
         NSDictionary *plistData = [self loadPlistData];
