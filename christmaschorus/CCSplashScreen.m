@@ -20,6 +20,30 @@
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
         background.zPosition = 0;
+
+        SKSpriteNode *titleCard = [SKSpriteNode spriteNodeWithImageNamed:@"titlecard"];
+        titleCard.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        [self addChild:titleCard];
+        titleCard.zPosition = 1;
+
+        //get the santa animation ready
+        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"santa"];
+        NSArray *animationFrames = [NSArray arrayWithObjects:@"laying1", @"laying2", @"laying3", @"laying4", @"laying5", @"laying6", @"laying7", @"laying8",
+                                   @"laying7", @"laying6", @"laying5", @"laying4", @"laying3", @"laying2", @"laying1", nil];
+        NSMutableArray *frames = [NSMutableArray arrayWithCapacity:animationFrames.count];
+        for (int i=0; i<animationFrames.count; i++) {
+            SKTexture *animationTex = [atlas textureNamed:animationFrames[i]];
+            [frames addObject:animationTex];
+        }
+        //build the animation for playing instrument
+        SKAction *layingAction = [SKAction repeatActionForever:[SKAction animateWithTextures:frames timePerFrame:0.2]];
+
+        SKSpriteNode *santa = [SKSpriteNode spriteNodeWithImageNamed:@"laying1"];
+        santa.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 50);
+        [self addChild:santa];
+        santa.zPosition = 2;
+        [santa runAction:layingAction];
+
     }
     
     return self;

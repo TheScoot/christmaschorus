@@ -36,6 +36,7 @@
 		4AC395361831B8D7009991D8 /* piano.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395321831B8D7009991D8 /* piano.aif */; };
 		4AC395371831B8D7009991D8 /* singer.aif in Resources */ = {isa = PBXBuildFile; fileRef = 4AC395331831B8D7009991D8 /* singer.aif */; };
 		4AC3953A1831C41C009991D8 /* CCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC395391831C41C009991D8 /* CCPlayer.m */; };
+		4AFB5037184060A1006899E8 /* santa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4AFB5036184060A1006899E8 /* santa.atlas */; };
 		D290A5E518334EC600BDA71F /* snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E318334EC600BDA71F /* snowing.sks */; };
 		D290A5E81833502A00BDA71F /* snowflake.png in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E71833502A00BDA71F /* snowflake.png */; };
 		D290A5F3183B2E0400BDA71F /* CCSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D290A5F2183B2E0400BDA71F /* CCSplashScreen.m */; };
@@ -90,6 +91,7 @@
 		4AC395331831B8D7009991D8 /* singer.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = singer.aif; sourceTree = "<group>"; };
 		4AC395381831C41C009991D8 /* CCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPlayer.h; sourceTree = "<group>"; };
 		4AC395391831C41C009991D8 /* CCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPlayer.m; sourceTree = "<group>"; };
+		4AFB5036184060A1006899E8 /* santa.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = santa.atlas; sourceTree = "<group>"; };
 		D290A5E318334EC600BDA71F /* snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = snowing.sks; sourceTree = "<group>"; };
 		D290A5E71833502A00BDA71F /* snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake.png; sourceTree = "<group>"; };
 		D290A5F1183B2E0400BDA71F /* CCSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSplashScreen.h; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		4AC394F21831B53C009991D8 /* christmaschorus */ = {
 			isa = PBXGroup;
 			children = (
+				4AFB5036184060A1006899E8 /* santa.atlas */,
 				D290A5F6183B320400BDA71F /* bglights.atlas */,
 				D290A5F4183B314E00BDA71F /* snowball1.png */,
 				4A8DC3AF18395151000419D8 /* drummer.atlas */,
@@ -317,6 +320,7 @@
 				4AC395031831B53C009991D8 /* Main_iPad.storyboard in Resources */,
 				4A8DC3AE18394FF9000419D8 /* guitar.atlas in Resources */,
 				4AC395001831B53C009991D8 /* Main_iPhone.storyboard in Resources */,
+				4AFB5037184060A1006899E8 /* santa.atlas in Resources */,
 				4A8DC3AA18394E53000419D8 /* singer.atlas in Resources */,
 				4AC394F71831B53C009991D8 /* InfoPlist.strings in Resources */,
 				D290A5F7183B320400BDA71F /* bglights.atlas in Resources */,
