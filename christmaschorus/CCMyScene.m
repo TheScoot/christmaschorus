@@ -65,14 +65,16 @@
             [self addChild:newChorus];
             [chorus addObject:newChorus];
         }
-        
-        //start playing the song
-        for (CCPlayer *chorusPlayer in chorus){
-            [chorusPlayer startPlaying];
-        }
     }
     
     return self;
+}
+
+-(void) showScene{
+    //start playing the song
+    for (CCPlayer *chorusPlayer in chorus){
+        [chorusPlayer startPlaying];
+    }
 }
 
 #pragma mark - helper functions

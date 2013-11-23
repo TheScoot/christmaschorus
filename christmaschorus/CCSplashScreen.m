@@ -9,7 +9,9 @@
 #import "CCSplashScreen.h"
 #import "CCMyScene.h"
 
-@implementation CCSplashScreen
+@implementation CCSplashScreen{
+    CCMyScene *mainScene;
+}
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -44,15 +46,16 @@
         santa.zPosition = 2;
         [santa runAction:layingAction];
 
+        mainScene = [[CCMyScene alloc] initWithSize: CGSizeMake(1024,768)];
     }
     
     return self;
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    SKTransition *reveal = [SKTransition revealWithDirection:SKTransitionDirectionLeft duration:1.0];
-    CCMyScene *newScene = [[CCMyScene alloc] initWithSize: CGSizeMake(1024,768)];
-    [self.scene.view presentScene: newScene transition: reveal];
-    
+    SKTransition *reveal = [SKTransition crossFadeWithDuration:2.0];
+    [self.scene.view presentScene: mainScene transition: reveal];
+    [mainScene showScene];
+
 }
 @end
