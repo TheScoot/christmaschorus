@@ -14,6 +14,7 @@
     SKTexture *hiddenTexture;
     NSTimer *randomThrowTimer;
     SKSpriteNode *throwingElf;
+    UITapGestureRecognizer* tapOnce;
 }
 
 -(id)init{
@@ -40,7 +41,7 @@
         self.position = CGPointMake(0, 100);
         [self resetRandomThrowTimer];
         NSLog(@"bounding Box after loading = %@", NSStringFromCGRect(self.frame));
-
+        [self debugBox:self.frame];
     }
     
     return self;
@@ -77,14 +78,15 @@
     [throwingElf removeFromParent];
     throwingElf.texture = hiddenTexture;
     throwingElf.scale = 1.0;
-    throwingElf.zPosition = 1000;
-    float newX = arc4random_uniform((self.parent.frame.size.width) - 40) - ((self.parent.frame.size.width / 2) + 20);
-    float newY = arc4random_uniform(25) + 80;
+    self.zPosition = 1000;
+    float newX = arc4random_uniform((self.parent.frame.size.width) - 100) - ((self.parent.frame.size.width / 2) + 20);
+    float newY = arc4random_uniform(50) + 80;
     self.alpha = 1.0f;
     self.position = CGPointMake(newX, newY);
     NSLog(@"new Pos = %@", NSStringFromCGPoint(self.position));
     allowThrowing = YES;
     NSLog(@"bounding Box after moving elf = %@", NSStringFromCGRect(self.frame));
+    [self debugBox:self.frame];
 }
 
 -(void)removeSnowball{
@@ -94,5 +96,20 @@
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     NSLog(@"Touched my elf!");
     [self throwSnowball];
+}
+
+-(void) debugBox:(CGRect)theRect {
+    
+    SKShapeNode*  pathShape = [[SKShapeNode alloc] init];
+    CGPathRef thePath = CGPathCreateWithRect( theRect, NULL);
+    pathShape.path = thePath;
+    
+    pathShape.lineWidth = 1;
+    pathShape.strokeColor = [SKColor greenColor];
+    pathShape.position = CGPointMake( 0, 0);
+    
+    [self.parent addChild:pathShape];
+    pathShape.zPosition = 1000;
+    
 }
 @end
