@@ -12,8 +12,10 @@
     AVAudioPlayer *avPlayer;
     SKLabelNode *debugLabel;
     SKAction *playingAction;
+    SKAction *stoppingAction;
     NSDictionary *playerDict;
     SKTexture *offTexture;
+    SKTexture *firstFrame;
 }
 
 -(id) initWithDictionary:(NSDictionary *) playerDictionary{
@@ -46,10 +48,12 @@
             NSMutableArray *frames = [NSMutableArray arrayWithCapacity:animationFrames.count];
             for (int i=0; i<animationFrames.count; i++) {
                 SKTexture *animationTex = [atlas textureNamed:animationFrames[i]];
+                if(i == 0) firstFrame = animationTex;
                 [frames addObject:animationTex];
             }
             //build the animation for playing instrument
             playingAction = [SKAction repeatActionForever:[SKAction animateWithTextures:frames timePerFrame:0.2]];
+            stoppingAction = [SKAction animateWithTextures:frames timePerFrame:0.1];
         }
     }
     
@@ -78,24 +82,24 @@
 -(void) togglePlaying{
     if(avPlayer.volume == 0.0){
         [avPlayer setVolume:1.0];
-        self.colorBlendFactor = 0.0;
         [self playingAnimation];
     } else {
-        [avPlayer setVolume:0.0];
-        self.texture = offTexture;
-        //self.colorBlendFactor = 0.75;
         [self stopAnimation];
+        [avPlayer setVolume:0.0];
     }
 }
 
 -(void) playingAnimation{
     if(playingAction){
+        self.size = firstFrame.size;
         [self runAction:playingAction];
     }
 }
 
 -(void) stopAnimation{
     [self removeAllActions];
+    self.texture = offTexture;
+    self.size = offTexture.size;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -110,6 +114,9 @@
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    //we only want to mave things if we are debugging
+    if(!debugMode) return;
+    
     //get the touch info
 	UITouch *touch = [touches anyObject];
     //where did the user touch

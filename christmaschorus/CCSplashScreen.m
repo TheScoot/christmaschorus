@@ -11,10 +11,17 @@
 
 @implementation CCSplashScreen{
     CCMyScene *mainScene;
+    float deviceScale;
 }
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            deviceScale = 0.4f;
+        } else {
+            deviceScale = 1.0f;
+        }
+        
         //get the coordinates of the scene the same as all the sprites
         self.anchorPoint = CGPointMake(0.5,0.5);
         
@@ -22,16 +29,26 @@
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
         background.zPosition = 0;
-
-        SKSpriteNode *titleCard = [SKSpriteNode spriteNodeWithImageNamed:@"titlecard"];
-        titleCard.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        [self addChild:titleCard];
-        titleCard.zPosition = 1;
+        //background.scale = deviceScale;
 
         //get the santa animation ready
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"santa"];
-        NSArray *animationFrames = [NSArray arrayWithObjects:@"laying1", @"laying2", @"laying3", @"laying4", @"laying5", @"laying6", @"laying7", @"laying8",
-                                   @"laying7", @"laying6", @"laying5", @"laying4", @"laying3", @"laying2", @"laying1", nil];
+        NSArray *animationFrames = [NSArray arrayWithObjects:@"laying1",
+                                    @"laying2",
+                                    @"laying3",
+                                    @"laying4",
+                                    @"laying5",
+                                    @"laying6",
+                                    @"laying7",
+                                    @"laying8",
+                                    @"laying7",
+                                    @"laying6",
+                                    @"laying5",
+                                    @"laying4",
+                                    @"laying3",
+                                    @"laying2",
+                                    @"laying1",
+                                    nil];
         NSMutableArray *frames = [NSMutableArray arrayWithCapacity:animationFrames.count];
         for (int i=0; i<animationFrames.count; i++) {
             SKTexture *animationTex = [atlas textureNamed:animationFrames[i]];
@@ -40,12 +57,28 @@
         //build the animation for playing instrument
         SKAction *layingAction = [SKAction repeatActionForever:[SKAction animateWithTextures:frames timePerFrame:0.2]];
 
+        //Put the title stuff together
+        SKNode *title = [SKNode node];
+        
         SKSpriteNode *santa = [SKSpriteNode spriteNodeWithImageNamed:@"laying1"];
         santa.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 50);
-        [self addChild:santa];
+        [title addChild:santa];
         santa.zPosition = 2;
         [santa runAction:layingAction];
 
+        SKSpriteNode *titleCardTop = [SKSpriteNode spriteNodeWithImageNamed:@"titletop"];
+        titleCardTop.position = CGPointMake(CGRectGetMidX(self.frame), (santa.frame.size.height / 2) + 100);
+        [title addChild:titleCardTop];
+        titleCardTop.zPosition = 1;
+        
+        SKSpriteNode *titleCardBottom = [SKSpriteNode spriteNodeWithImageNamed:@"titlebottom"];
+        titleCardBottom.position = CGPointMake(CGRectGetMidX(self.frame), -(santa.frame.size.height / 2) - 100);
+        [title addChild:titleCardBottom];
+        titleCardBottom.zPosition = 1;
+        
+        title.scale = deviceScale;
+        [background addChild:title];
+        
         mainScene = [[CCMyScene alloc] initWithSize: CGSizeMake(1024,768)];
     }
     

@@ -22,8 +22,11 @@
         
         // Create and configure the scene.
         SKScene * scene = [CCSplashScreen sceneWithSize:skView.bounds.size];
-        scene.scaleMode = SKSceneScaleModeAspectFill;
-        
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            scene.scaleMode = SKSceneScaleModeAspectFit;
+        } else {
+            scene.scaleMode = SKSceneScaleModeAspectFill;
+        }
         // Present the scene.
         [skView presentScene:scene];
     }

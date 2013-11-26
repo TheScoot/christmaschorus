@@ -8,11 +8,13 @@
 
 #import "CCMyScene.h"
 #import "CCPlayer.h"
+#import "CCElf.h"
 
 @implementation CCMyScene{
     SKEmitterNode *snowPartical;
     NSArray *chorusDictArray;
     NSMutableArray *chorus;
+    CCElf *dirtyElf;
 }
 
 
@@ -26,8 +28,18 @@
         [self addChild:background];
         background.zPosition = 0;
 
+        dirtyElf = [[CCElf alloc] init];
+        dirtyElf.position = CGPointMake(-50, 0);
+        [background addChild:dirtyElf];
+        dirtyElf.zPosition = 1000;
+        
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"bglights"];
-        NSArray *animationFrames = [NSArray arrayWithObjects:@"lights1.png", @"lights2.png", nil];
+        NSArray *animationFrames = [NSArray arrayWithObjects:@"blinking1.png",
+                                    @"blinking2.png",
+                                    @"blinking3.png",
+                                    @"blinking4.png",
+                                    @"blinking5.png",
+                                    nil];
         NSMutableArray *frames = [NSMutableArray arrayWithCapacity:animationFrames.count];
         for (int i=0; i<animationFrames.count; i++) {
             SKTexture *animationTex = [atlas textureNamed:animationFrames[i]];
@@ -67,9 +79,14 @@
         }
     }
     
+    [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(throwSnowball) userInfo:nil repeats:YES];
+    
     return self;
 }
 
+-(void) throwSnowball{
+    [dirtyElf throw];
+}
 -(void) showScene{
     //start playing the song
     for (CCPlayer *chorusPlayer in chorus){
