@@ -14,7 +14,6 @@
     SKTexture *hiddenTexture;
     NSTimer *randomThrowTimer;
     SKSpriteNode *throwingElf;
-    UITapGestureRecognizer* tapOnce;
 }
 
 -(id)init{
