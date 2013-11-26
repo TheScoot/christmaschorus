@@ -62,7 +62,7 @@
         snowPartical = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
         snowPartical.particlePosition = CGPointMake(0, (self.frame.size.height/2));
         snowPartical.zPosition = 0;
-        [self addChild:snowPartical];
+        //[self addChild:snowPartical];
 
         //walk the chorus out onto the stage
         chorus = [NSMutableArray arrayWithCapacity:chorusDictArray.count];

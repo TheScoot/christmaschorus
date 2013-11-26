@@ -18,6 +18,7 @@
 
 -(id)init{
     self = [super initWithImageNamed:@"elf-hidden"];
+    //self = [super initWithColor:[SKColor redColor] size:CGSizeMake(100,100)];
     
     if(self){
         self.userInteractionEnabled = YES;
@@ -47,16 +48,12 @@
 }
 
 
--(void) throwRandomSnowball{
-    [self throwSnowball];
-}
-
 -(void) resetRandomThrowTimer{
     //first kill any timer already running
     [randomThrowTimer invalidate];
     //throw at a random time from now but at least 10 more seconds
     int nextThrow = arc4random_uniform(20) + 10;
-    randomThrowTimer = [NSTimer scheduledTimerWithTimeInterval:nextThrow target:self selector:@selector(throwRandomSnowball) userInfo:nil repeats:NO];
+    randomThrowTimer = [NSTimer scheduledTimerWithTimeInterval:nextThrow target:self selector:@selector(throwSnowball) userInfo:nil repeats:NO];
 }
 
 
@@ -98,6 +95,7 @@
 }
 
 -(void) debugBox:(CGRect)theRect {
+    return;
     
     SKShapeNode*  pathShape = [[SKShapeNode alloc] init];
     CGPathRef thePath = CGPathCreateWithRect( theRect, NULL);
