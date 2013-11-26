@@ -79,16 +79,16 @@
         title.scale = deviceScale;
         [background addChild:title];
         
-        mainScene = [[CCMyScene alloc] initWithSize: CGSizeMake(1024,768)];
+        mainScene = [[CCMyScene alloc] initWithSize:self.size];
     }
     
     return self;
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    NSLog(@"Transitioning");
     SKTransition *reveal = [SKTransition crossFadeWithDuration:2.0];
     [self.scene.view presentScene: mainScene transition: reveal];
     [mainScene showScene];
-
 }
 @end

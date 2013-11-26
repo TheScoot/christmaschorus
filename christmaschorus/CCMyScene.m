@@ -69,6 +69,7 @@
         snowPartical.zPosition = 0;
         [self addChild:snowPartical];
 
+        //walk the chorus out onto the stage
         chorus = [NSMutableArray arrayWithCapacity:chorusDictArray.count];
         for (NSDictionary *chorusData in chorusDictArray) {
             CCPlayer *newChorus = [[CCPlayer alloc] initWithDictionary:chorusData];
@@ -79,6 +80,7 @@
         }
     }
     
+    //start the dirty elf thrwoing snowballs
     [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(throwSnowball) userInfo:nil repeats:YES];
     
     return self;
@@ -101,17 +103,5 @@
     NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:finalPath];
     return plistData;
 }
-
-#pragma mark - touches
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-
-        
-    }
-}
-
 
 @end

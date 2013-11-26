@@ -26,14 +26,14 @@
         allowThrowing = YES;
         
         //get the popping animation ready
-        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"elf"];
+        //SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"elf"];
         NSMutableArray *frames = [NSMutableArray arrayWithCapacity:26];
         for (int i=1; i<=24; i++) {
-            SKTexture *animationTex = [atlas textureNamed:[NSString stringWithFormat:@"elf%d", i]];
+            SKTexture *animationTex = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"elf%d", i]];
             [frames addObject:animationTex];
         }
         //build the animation for playing instrument
-        throwingAction = [SKAction animateWithTextures:frames timePerFrame:1.0];
+        throwingAction = [SKAction animateWithTextures:frames timePerFrame:0.075];
         
         originalPosition = self.position;
     }
