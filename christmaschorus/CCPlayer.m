@@ -41,7 +41,7 @@
         self.color = [SKColor blackColor];
         self.colorBlendFactor = 0.0;
 
-        //get the popping animation ready
+        //get the playing animation ready
         if(playerDict[@"playingAnimationAtlas"]){
             SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:playerDict[@"playingAnimationAtlas"]];
             NSArray *animationFrames = [NSArray arrayWithArray:playerDict[@"playingAnimationFrames"]];
@@ -64,12 +64,14 @@
     NSString *resourcePath;
     NSError* err;
 
-    //Initialize our DRUM player
+    //Initialize our player
     resourcePath = [[NSBundle mainBundle] pathForResource:instrument ofType:@"aif"];
     avPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
     if( err ){
         //bail!
         NSLog(@"Failed with reason: %@", [err localizedDescription]);
+    } else {
+        [avPlayer prepareToPlay];
     }
 }
 
@@ -103,14 +105,9 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
 
     [self togglePlaying];
-    
-    //get the touch info
-	UITouch *touch = [touches anyObject];
-    //where did the user touch
-	CGPoint positionInScene = [touch locationInNode:self.parent];
+
 }
 
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{

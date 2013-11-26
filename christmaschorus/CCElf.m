@@ -12,20 +12,22 @@
     SKAction *throwingAction;
     bool allowThrowing;
     SKTexture *hiddenTexture;
-    CGPoint originalPosition;
+    NSTimer *randomThrowTimer;
+    SKSpriteNode *throwingElf;
 }
 
 -(id)init{
-    self = [super initWithImageNamed:@"elfstart"];
+    self = [super initWithImageNamed:@"elf-hidden"];
     
     if(self){
         self.userInteractionEnabled = YES;
 
-        hiddenTexture = [SKTexture textureWithImageNamed:@"elfstart"];
-        
         allowThrowing = YES;
         
-        //get the popping animation ready
+        //get the throwing animation ready
+        throwingElf = [SKSpriteNode spriteNodeWithImageNamed:@"elfstart"];
+        throwingElf.zPosition = 1000;
+        hiddenTexture = [SKTexture textureWithImageNamed:@"elfstart"];
         //SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"elf"];
         NSMutableArray *frames = [NSMutableArray arrayWithCapacity:26];
         for (int i=1; i<=24; i++) {
@@ -35,37 +37,62 @@
         //build the animation for playing instrument
         throwingAction = [SKAction animateWithTextures:frames timePerFrame:0.075];
         
-        originalPosition = self.position;
+        self.position = CGPointMake(0, 100);
+        [self resetRandomThrowTimer];
+        NSLog(@"bounding Box after loading = %@", NSStringFromCGRect(self.frame));
+
     }
     
     return self;
 }
 
--(void) setPosition:(CGPoint)position{
-    [super setPosition:position];
-    originalPosition = position;
+
+-(void) throwRandomSnowball{
+    [self throwSnowball];
 }
 
--(void) throw{
+-(void) resetRandomThrowTimer{
+    //first kill any timer already running
+    [randomThrowTimer invalidate];
+    //throw at a random time from now but at least 10 more seconds
+    int nextThrow = arc4random_uniform(20) + 10;
+    randomThrowTimer = [NSTimer scheduledTimerWithTimeInterval:nextThrow target:self selector:@selector(throwRandomSnowball) userInfo:nil repeats:NO];
+}
+
+
+-(void) throwSnowball{
+    NSLog(@"bounding Box before throw = %@", NSStringFromCGRect(self.frame));
     if(!self.hasActions && allowThrowing == YES){
         allowThrowing = NO;
-        [self runAction:throwingAction completion:^{ [self removeSnowball]; }];
+        self.alpha = 0.0f;
+        throwingElf.position = CGPointMake(self.position.x - 82, self.position.y - 117);
+        [self.parent addChild:throwingElf];
+        [throwingElf runAction:throwingAction completion:^{ [self removeSnowball]; }];
     }
+    [self resetRandomThrowTimer];
 }
 
 -(void) hideElf{
-    self.position = originalPosition;
-    self.texture = hiddenTexture;
-    self.scale = 1.0;
+    [throwingElf removeAllActions];
+    [throwingElf removeFromParent];
+    throwingElf.texture = hiddenTexture;
+    throwingElf.scale = 1.0;
+    throwingElf.zPosition = 1000;
+    float newX = arc4random_uniform((self.parent.frame.size.width) - 40) - ((self.parent.frame.size.width / 2) + 20);
+    float newY = arc4random_uniform(25) + 80;
+    self.alpha = 1.0f;
+    self.position = CGPointMake(newX, newY);
+    NSLog(@"new Pos = %@", NSStringFromCGPoint(self.position));
     allowThrowing = YES;
+    NSLog(@"bounding Box after moving elf = %@", NSStringFromCGRect(self.frame));
 }
 
 -(void)removeSnowball{
-    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5f],[SKAction group:@[[SKAction moveToY:-(self.parent.frame.size.height) duration:1.5], [SKAction scaleBy:0.25f duration:1.5]]]]] completion:^{ [self hideElf];     allowThrowing = YES; }];
-    //[self hideElf];
+    [throwingElf runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5f],[SKAction group:@[[SKAction moveToY:-(self.parent.frame.size.height) duration:1.5f], [SKAction scaleBy:0.25f duration:1.5f]]]]] completion:^{ [self hideElf];     allowThrowing = YES; }];
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self throw];
+    NSLog(@"Touched my elf!");
+    [self throwSnowball];
 }
 @end

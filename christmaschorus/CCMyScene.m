@@ -14,26 +14,21 @@
     SKEmitterNode *snowPartical;
     NSArray *chorusDictArray;
     NSMutableArray *chorus;
-    CCElf *dirtyElf;
+    SKSpriteNode *background;
 }
 
 
--(id)initWithSize:(CGSize)size {    
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         //get the coordinates of the scene the same as all the sprites
         self.anchorPoint = CGPointMake(0.5,0.5);
         
-        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+        background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
         background.zPosition = 0;
 
-        dirtyElf = [[CCElf alloc] init];
-        dirtyElf.position = CGPointMake(-50, 0);
-        [background addChild:dirtyElf];
-        dirtyElf.zPosition = 1000;
-        
-        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"bglights"];
+        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"blinking"];
         NSArray *animationFrames = [NSArray arrayWithObjects:@"blinking1.png",
                                     @"blinking2.png",
                                     @"blinking3.png",
@@ -48,7 +43,7 @@
         //build the animation for blinking the lights
         SKAction *lightsBlinking = [SKAction repeatActionForever:[SKAction animateWithTextures:frames timePerFrame:0.5f]];
         SKSpriteNode *lights = [SKSpriteNode spriteNodeWithImageNamed:@"lightson"];
-        lights.position = CGPointMake(0, ((background.size.height / 2) - lights.size.height / 2));
+        lights.position = CGPointMake(CGRectGetMidX(self.frame), ((self.frame.size.height / 2) - lights.size.height / 2));
         lights.zPosition = 1;
         [background addChild:lights];
         [lights runAction:lightsBlinking];
@@ -80,20 +75,19 @@
         }
     }
     
-    //start the dirty elf thrwoing snowballs
-    [NSTimer scheduledTimerWithTimeInterval:8.0 target:self selector:@selector(throwSnowball) userInfo:nil repeats:YES];
-    
     return self;
 }
 
--(void) throwSnowball{
-    [dirtyElf throw];
-}
 -(void) showScene{
     //start playing the song
     for (CCPlayer *chorusPlayer in chorus){
         [chorusPlayer startPlaying];
     }
+    //add in a dirty elf to start throwing snowballs
+    CCElf *dirtyElf;
+    dirtyElf = [[CCElf alloc] init];
+    [background addChild:dirtyElf];
+    dirtyElf.zPosition = 1000;
 }
 
 #pragma mark - helper functions

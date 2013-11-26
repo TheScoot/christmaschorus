@@ -38,11 +38,11 @@
 		4AC3953A1831C41C009991D8 /* CCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC395391831C41C009991D8 /* CCPlayer.m */; };
 		4AFB5039184066D8006899E8 /* santa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4AFB5038184066D8006899E8 /* santa.atlas */; };
 		D21981CA18440B5A000F67EF /* CCElf.m in Sources */ = {isa = PBXBuildFile; fileRef = D21981C918440B5A000F67EF /* CCElf.m */; };
+		D21981CC18452336000F67EF /* blinking.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D21981CB18452336000F67EF /* blinking.atlas */; };
 		D290A5E518334EC600BDA71F /* snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E318334EC600BDA71F /* snowing.sks */; };
 		D290A5E81833502A00BDA71F /* snowflake.png in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E71833502A00BDA71F /* snowflake.png */; };
 		D290A5F3183B2E0400BDA71F /* CCSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D290A5F2183B2E0400BDA71F /* CCSplashScreen.m */; };
 		D290A5F5183B314E00BDA71F /* snowball1.png in Resources */ = {isa = PBXBuildFile; fileRef = D290A5F4183B314E00BDA71F /* snowball1.png */; };
-		D290A5F7183B320400BDA71F /* bglights.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D290A5F6183B320400BDA71F /* bglights.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,12 +95,12 @@
 		4AFB5038184066D8006899E8 /* santa.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = santa.atlas; sourceTree = "<group>"; };
 		D21981C818440B5A000F67EF /* CCElf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCElf.h; sourceTree = "<group>"; };
 		D21981C918440B5A000F67EF /* CCElf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCElf.m; sourceTree = "<group>"; };
+		D21981CB18452336000F67EF /* blinking.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blinking.atlas; sourceTree = "<group>"; };
 		D290A5E318334EC600BDA71F /* snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = snowing.sks; sourceTree = "<group>"; };
 		D290A5E71833502A00BDA71F /* snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake.png; sourceTree = "<group>"; };
 		D290A5F1183B2E0400BDA71F /* CCSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSplashScreen.h; sourceTree = "<group>"; };
 		D290A5F2183B2E0400BDA71F /* CCSplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSplashScreen.m; sourceTree = "<group>"; };
 		D290A5F4183B314E00BDA71F /* snowball1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowball1.png; sourceTree = "<group>"; };
-		D290A5F6183B320400BDA71F /* bglights.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bglights.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +166,8 @@
 		4AC394F21831B53C009991D8 /* christmaschorus */ = {
 			isa = PBXGroup;
 			children = (
+				D21981CB18452336000F67EF /* blinking.atlas */,
 				4AFB5038184066D8006899E8 /* santa.atlas */,
-				D290A5F6183B320400BDA71F /* bglights.atlas */,
 				D290A5F4183B314E00BDA71F /* snowball1.png */,
 				4A8DC3AF18395151000419D8 /* drummer.atlas */,
 				4A8DC3AD18394FF9000419D8 /* guitar.atlas */,
@@ -323,12 +323,12 @@
 				4AC3952A1831B5AA009991D8 /* GameData.plist in Resources */,
 				4A8DC3AC18394F64000419D8 /* piano.atlas in Resources */,
 				4AC395031831B53C009991D8 /* Main_iPad.storyboard in Resources */,
+				D21981CC18452336000F67EF /* blinking.atlas in Resources */,
 				4A8DC3AE18394FF9000419D8 /* guitar.atlas in Resources */,
 				4AC395001831B53C009991D8 /* Main_iPhone.storyboard in Resources */,
 				4AFB5039184066D8006899E8 /* santa.atlas in Resources */,
 				4A8DC3AA18394E53000419D8 /* singer.atlas in Resources */,
 				4AC394F71831B53C009991D8 /* InfoPlist.strings in Resources */,
-				D290A5F7183B320400BDA71F /* bglights.atlas in Resources */,
 				4AC395351831B8D7009991D8 /* guitar.aif in Resources */,
 				4AC395341831B8D7009991D8 /* drummer.aif in Resources */,
 				D290A5E518334EC600BDA71F /* snowing.sks in Resources */,

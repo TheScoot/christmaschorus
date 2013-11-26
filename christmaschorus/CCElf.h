@@ -10,6 +10,6 @@
 
 @interface CCElf : SKSpriteNode
 
--(void) throw;
+-(void) throwSnowball;
 
 @end

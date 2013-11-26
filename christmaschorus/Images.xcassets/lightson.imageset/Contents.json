@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "lights2.png"
+      "filename" : "blinking1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "lights2@2x.png"
+      "filename" : "blinking1@2x.png"
     }
   ],
   "info" : {
