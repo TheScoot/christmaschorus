@@ -87,6 +87,11 @@
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     SKTransition *reveal = [SKTransition fadeWithDuration:2.0];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        mainScene.scaleMode = SKSceneScaleModeAspectFit;
+    } else {
+        mainScene.scaleMode = SKSceneScaleModeAspectFill;
+    }
     [self.scene.view presentScene: mainScene transition: reveal];
     [mainScene showScene];
 }

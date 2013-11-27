@@ -33,13 +33,17 @@
         debugLabel = [SKLabelNode labelNodeWithFontNamed:@"helvetica"];
         debugLabel.fontColor = [SKColor blackColor];
         [self addChild:debugLabel];
-        
-        self.position = CGPointFromString([NSString stringWithFormat:@"{%@}",playerDict[@"position"]]);
-        self.scale = [playerDict[@"scale"] floatValue];
+
+        //position and scale based on device
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            self.position = CGPointFromString([NSString stringWithFormat:@"{%@}",playerDict[@"position-iphone"]]);
+            self.scale = [playerDict[@"scale-iphone"] floatValue];
+        } else {
+            self.position = CGPointFromString([NSString stringWithFormat:@"{%@}",playerDict[@"position"]]);
+            self.scale = [playerDict[@"scale"] floatValue];
+        }
         self.zPosition = [playerDict[@"zPosition"] integerValue];
 
-        self.color = [SKColor blackColor];
-        self.colorBlendFactor = 0.0;
 
         //get the playing animation ready
         if(playerDict[@"playingAnimationAtlas"]){
@@ -93,7 +97,13 @@
 
 -(void) playingAnimation{
     if(playingAction){
+        //sprite was bouncing around in size, so make sure we resize ourselves to the firstFrame
         self.size = firstFrame.size;
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            self.scale = [playerDict[@"scale-iphone"] floatValue];
+        } else {
+            self.scale = [playerDict[@"scale"] floatValue];
+        }
         [self runAction:playingAction];
     }
 }
@@ -101,7 +111,13 @@
 -(void) stopAnimation{
     [self removeAllActions];
     self.texture = offTexture;
+    //sprite was bouncing around in size, so make sure we resize ourselves to the off image
     self.size = offTexture.size;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        self.scale = [playerDict[@"scale-iphone"] floatValue];
+    } else {
+        self.scale = [playerDict[@"scale"] floatValue];
+    }
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

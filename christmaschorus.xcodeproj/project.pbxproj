@@ -39,6 +39,7 @@
 		4AFB5039184066D8006899E8 /* santa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4AFB5038184066D8006899E8 /* santa.atlas */; };
 		D21981CA18440B5A000F67EF /* CCElf.m in Sources */ = {isa = PBXBuildFile; fileRef = D21981C918440B5A000F67EF /* CCElf.m */; };
 		D21981CC18452336000F67EF /* blinking.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D21981CB18452336000F67EF /* blinking.atlas */; };
+		D21981CF18455848000F67EF /* SKSpriteNode+debug.m in Sources */ = {isa = PBXBuildFile; fileRef = D21981CE18455848000F67EF /* SKSpriteNode+debug.m */; };
 		D290A5E518334EC600BDA71F /* snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E318334EC600BDA71F /* snowing.sks */; };
 		D290A5E81833502A00BDA71F /* snowflake.png in Resources */ = {isa = PBXBuildFile; fileRef = D290A5E71833502A00BDA71F /* snowflake.png */; };
 		D290A5F3183B2E0400BDA71F /* CCSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = D290A5F2183B2E0400BDA71F /* CCSplashScreen.m */; };
@@ -96,6 +97,8 @@
 		D21981C818440B5A000F67EF /* CCElf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCElf.h; sourceTree = "<group>"; };
 		D21981C918440B5A000F67EF /* CCElf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCElf.m; sourceTree = "<group>"; };
 		D21981CB18452336000F67EF /* blinking.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blinking.atlas; sourceTree = "<group>"; };
+		D21981CD18455848000F67EF /* SKSpriteNode+debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+debug.h"; sourceTree = "<group>"; };
+		D21981CE18455848000F67EF /* SKSpriteNode+debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+debug.m"; sourceTree = "<group>"; };
 		D290A5E318334EC600BDA71F /* snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = snowing.sks; sourceTree = "<group>"; };
 		D290A5E71833502A00BDA71F /* snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake.png; sourceTree = "<group>"; };
 		D290A5F1183B2E0400BDA71F /* CCSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSplashScreen.h; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				4AC395391831C41C009991D8 /* CCPlayer.m */,
 				D21981C818440B5A000F67EF /* CCElf.h */,
 				D21981C918440B5A000F67EF /* CCElf.m */,
+				D21981CD18455848000F67EF /* SKSpriteNode+debug.h */,
+				D21981CE18455848000F67EF /* SKSpriteNode+debug.m */,
 				D290A5E318334EC600BDA71F /* snowing.sks */,
 				4AC395291831B5AA009991D8 /* GameData.plist */,
 				4AC3950C1831B53C009991D8 /* Images.xcassets */,
@@ -354,6 +359,7 @@
 				4AC395091831B53C009991D8 /* CCMyScene.m in Sources */,
 				D290A5F3183B2E0400BDA71F /* CCSplashScreen.m in Sources */,
 				4AC394FD1831B53C009991D8 /* CCAppDelegate.m in Sources */,
+				D21981CF18455848000F67EF /* SKSpriteNode+debug.m in Sources */,
 				4AC394F91831B53C009991D8 /* main.m in Sources */,
 				4AC395061831B53C009991D8 /* CCViewController.m in Sources */,
 				D21981CA18440B5A000F67EF /* CCElf.m in Sources */,

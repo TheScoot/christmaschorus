@@ -20,15 +20,27 @@
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        
         //get the coordinates of the scene the same as all the sprites
         self.anchorPoint = CGPointMake(0.5,0.5);
         
-        background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+        //Load up a different background for the iPhones
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+        } else {
+            background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+        }
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:background];
         background.zPosition = 0;
 
-        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"blinking"];
+        //load up the christmas lights in the background
+        SKTextureAtlas *atlas;
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            atlas = [SKTextureAtlas atlasNamed:@"blinking"];
+        } else {
+            atlas = [SKTextureAtlas atlasNamed:@"blinking"];
+        }
         NSArray *animationFrames = [NSArray arrayWithObjects:@"blinking1.png",
                                     @"blinking2.png",
                                     @"blinking3.png",
@@ -57,19 +69,17 @@
         //see if we are in debug mode
         debugMode = [[plistData objectForKey:@"debugmode"] boolValue];
 
-        //pre-load partical effects
+        //pre-load partical effects for the snow
         NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"snowing" ofType:@"sks"];
         snowPartical = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
         snowPartical.particlePosition = CGPointMake(0, (self.frame.size.height/2));
         snowPartical.zPosition = 0;
-        //[self addChild:snowPartical];
+        [self addChild:snowPartical];
 
         //walk the chorus out onto the stage
         chorus = [NSMutableArray arrayWithCapacity:chorusDictArray.count];
         for (NSDictionary *chorusData in chorusDictArray) {
             CCPlayer *newChorus = [[CCPlayer alloc] initWithDictionary:chorusData];
-            //newChorus.zPosition = 1;
-            //newChorus.position = CGPointFromString(chorusData[@"position"]);
             [self addChild:newChorus];
             [chorus addObject:newChorus];
         }
@@ -86,7 +96,7 @@
     //add in a dirty elf to start throwing snowballs
     CCElf *dirtyElf;
     dirtyElf = [[CCElf alloc] init];
-    [background addChild:dirtyElf];
+    [self addChild:dirtyElf];
     dirtyElf.zPosition = 1000;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "CCElf.h"
+#import "SKSpriteNode+debug.h"
 
 @implementation CCElf{
     SKAction *throwingAction;
@@ -18,9 +19,12 @@
 
 -(id)init{
     self = [super initWithImageNamed:@"elf-hidden"];
-    //self = [super initWithColor:[SKColor redColor] size:CGSizeMake(100,100)];
     
     if(self){
+        //[self showZposition];
+        //[self showParent];
+        //[self showDebugBox];
+        
         self.userInteractionEnabled = YES;
 
         allowThrowing = YES;
@@ -38,10 +42,8 @@
         //build the animation for playing instrument
         throwingAction = [SKAction animateWithTextures:frames timePerFrame:0.075];
         
-        self.position = CGPointMake(0, 100);
+        self.position = CGPointMake(0, 120);
         [self resetRandomThrowTimer];
-        NSLog(@"bounding Box after loading = %@", NSStringFromCGRect(self.frame));
-        [self debugBox:self.frame];
     }
     
     return self;
@@ -58,7 +60,6 @@
 
 
 -(void) throwSnowball{
-    NSLog(@"bounding Box before throw = %@", NSStringFromCGRect(self.frame));
     if(!self.hasActions && allowThrowing == YES){
         allowThrowing = NO;
         self.alpha = 0.0f;
@@ -74,39 +75,19 @@
     [throwingElf removeFromParent];
     throwingElf.texture = hiddenTexture;
     throwingElf.scale = 1.0;
-    self.zPosition = 1000;
     float newX = arc4random_uniform((self.parent.frame.size.width) - 100) - ((self.parent.frame.size.width / 2) + 20);
-    float newY = arc4random_uniform(50) + 80;
+    float newY = arc4random_uniform(50) + 90;
     self.alpha = 1.0f;
     self.position = CGPointMake(newX, newY);
-    NSLog(@"new Pos = %@", NSStringFromCGPoint(self.position));
     allowThrowing = YES;
-    NSLog(@"bounding Box after moving elf = %@", NSStringFromCGRect(self.frame));
-    [self debugBox:self.frame];
 }
 
 -(void)removeSnowball{
-    [throwingElf runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5f],[SKAction group:@[[SKAction moveToY:-(self.parent.frame.size.height) duration:1.5f], [SKAction scaleBy:0.25f duration:1.5f]]]]] completion:^{ [self hideElf];     allowThrowing = YES; }];
+    [throwingElf runAction:[SKAction sequence:@[[SKAction waitForDuration:0.5f],[SKAction group:@[[SKAction moveToY:-(self.parent.frame.size.height) duration:1.5f], [SKAction scaleTo:0.10f duration:1.5f]]]]] completion:^{ [self hideElf];     allowThrowing = YES; }];
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    NSLog(@"Touched my elf!");
     [self throwSnowball];
 }
 
--(void) debugBox:(CGRect)theRect {
-    return;
-    
-    SKShapeNode*  pathShape = [[SKShapeNode alloc] init];
-    CGPathRef thePath = CGPathCreateWithRect( theRect, NULL);
-    pathShape.path = thePath;
-    
-    pathShape.lineWidth = 1;
-    pathShape.strokeColor = [SKColor greenColor];
-    pathShape.position = CGPointMake( 0, 0);
-    
-    [self.parent addChild:pathShape];
-    pathShape.zPosition = 1000;
-    
-}
 @end
