@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>debugmode</key>
-	<false/>
+	<true/>
 	<key>chorus</key>
 	<array>
 		<dict>
@@ -12,11 +12,11 @@
 			<key>position</key>
 			<string>396,-74</string>
 			<key>position-iphone</key>
-			<string>396,-74</string>
+			<string>215,-75</string>
 			<key>scale</key>
 			<integer>1</integer>
 			<key>scale-iphone</key>
-			<real>0.05</real>
+			<real>0.5</real>
 			<key>zPosition</key>
 			<string>1</string>
 			<key>playingAnimationAtlas</key>
@@ -39,7 +39,7 @@
 			<key>position</key>
 			<string>164,-82</string>
 			<key>position-iphone</key>
-			<string>164,-82</string>
+			<string>89,-75</string>
 			<key>scale</key>
 			<integer>1</integer>
 			<key>scale-iphone</key>
@@ -66,7 +66,7 @@
 			<key>position</key>
 			<string>-104,-101</string>
 			<key>position-iphone</key>
-			<string>-104,-101</string>
+			<string>-47,-83</string>
 			<key>scale</key>
 			<integer>1</integer>
 			<key>scale-iphone</key>
@@ -93,7 +93,7 @@
 			<key>position</key>
 			<string>-337,-77</string>
 			<key>position-iphone</key>
-			<string>-337,-77</string>
+			<string>-187,-74</string>
 			<key>scale</key>
 			<integer>1</integer>
 			<key>scale-iphone</key>

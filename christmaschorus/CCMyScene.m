@@ -26,7 +26,7 @@
         
         //Load up a different background for the iPhones
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
-            background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
+            background = [SKSpriteNode spriteNodeWithImageNamed:@"background-iphone"];
         } else {
             background = [SKSpriteNode spriteNodeWithImageNamed:@"background"];
         }
@@ -55,7 +55,13 @@
         //build the animation for blinking the lights
         SKAction *lightsBlinking = [SKAction repeatActionForever:[SKAction animateWithTextures:frames timePerFrame:0.5f]];
         SKSpriteNode *lights = [SKSpriteNode spriteNodeWithImageNamed:@"lightson"];
-        lights.position = CGPointMake(CGRectGetMidX(self.frame), ((self.frame.size.height / 2) - lights.size.height / 2));
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            lights.scale = 0.55f;
+            lights.position = CGPointMake(CGRectGetMidX(self.frame), ((self.frame.size.height / 2) - lights.size.height / 2));
+        } else {
+            lights.scale = 1.0f;
+            lights.position = CGPointMake(CGRectGetMidX(self.frame), ((self.frame.size.height / 2) - lights.size.height / 2));
+        }
         lights.zPosition = 1;
         [background addChild:lights];
         [lights runAction:lightsBlinking];

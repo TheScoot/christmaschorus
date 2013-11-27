@@ -15,6 +15,7 @@
     SKTexture *hiddenTexture;
     NSTimer *randomThrowTimer;
     SKSpriteNode *throwingElf;
+    float elfScale;
 }
 
 -(id)init{
@@ -31,6 +32,17 @@
         
         //get the throwing animation ready
         throwingElf = [SKSpriteNode spriteNodeWithImageNamed:@"elfstart"];
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            self.scale = 0.5f;
+            elfScale = 0.5f;
+            throwingElf.scale = elfScale;
+            self.position = CGPointMake(0, 10);
+        } else {
+            self.scale = 1.0f;
+            elfScale = 1.0f;
+            throwingElf.scale = elfScale;
+            self.position = CGPointMake(0, 120);
+        }
         throwingElf.zPosition = 1000;
         hiddenTexture = [SKTexture textureWithImageNamed:@"elfstart"];
         //SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"elf"];
@@ -42,7 +54,6 @@
         //build the animation for playing instrument
         throwingAction = [SKAction animateWithTextures:frames timePerFrame:0.075];
         
-        self.position = CGPointMake(0, 120);
         [self resetRandomThrowTimer];
     }
     
@@ -55,6 +66,7 @@
     [randomThrowTimer invalidate];
     //throw at a random time from now but at least 10 more seconds
     int nextThrow = arc4random_uniform(20) + 10;
+    nextThrow = 1;
     randomThrowTimer = [NSTimer scheduledTimerWithTimeInterval:nextThrow target:self selector:@selector(throwSnowball) userInfo:nil repeats:NO];
 }
 
@@ -63,7 +75,11 @@
     if(!self.hasActions && allowThrowing == YES){
         allowThrowing = NO;
         self.alpha = 0.0f;
-        throwingElf.position = CGPointMake(self.position.x - 82, self.position.y - 117);
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            throwingElf.position = CGPointMake(self.position.x - 43, self.position.y - 64);
+        } else {
+            throwingElf.position = CGPointMake(self.position.x - 82, self.position.y - 117);
+        }
         [self.parent addChild:throwingElf];
         [throwingElf runAction:throwingAction completion:^{ [self removeSnowball]; }];
     }
@@ -74,12 +90,24 @@
     [throwingElf removeAllActions];
     [throwingElf removeFromParent];
     throwingElf.texture = hiddenTexture;
-    throwingElf.scale = 1.0;
-    float newX = arc4random_uniform((self.parent.frame.size.width) - 100) - ((self.parent.frame.size.width / 2) + 20);
-    float newY = arc4random_uniform(50) + 90;
+    throwingElf.scale = elfScale;
+    float newX;
+    float newY;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        newX = arc4random_uniform((self.parent.frame.size.width) - 50) - ((self.parent.frame.size.width / 2)) + 25;
+        newY = arc4random_uniform(24) + 10;
+    } else {
+        newX = arc4random_uniform((self.parent.frame.size.width) - 50) - ((self.parent.frame.size.width / 2)) + 25;
+        newY = arc4random_uniform(50) + 90;
+        //commented out code will help test boundaries
+        //newX = ((self.parent.frame.size.width) - 50) - (self.parent.frame.size.width / 2) + 25;
+        //newX = 0 - (self.parent.frame.size.width / 2) + 25;
+        //newY = 50+90;
+    }
     self.alpha = 1.0f;
     self.position = CGPointMake(newX, newY);
     allowThrowing = YES;
+    //[self showDebugBox];
 }
 
 -(void)removeSnowball{

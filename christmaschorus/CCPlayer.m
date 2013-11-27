@@ -16,6 +16,8 @@
     NSDictionary *playerDict;
     SKTexture *offTexture;
     SKTexture *firstFrame;
+    CGSize playerSize;
+    float deviceScale;
 }
 
 -(id) initWithDictionary:(NSDictionary *) playerDictionary{
@@ -37,10 +39,12 @@
         //position and scale based on device
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
             self.position = CGPointFromString([NSString stringWithFormat:@"{%@}",playerDict[@"position-iphone"]]);
-            self.scale = [playerDict[@"scale-iphone"] floatValue];
+            deviceScale = [playerDict[@"scale-iphone"] floatValue];
+            self.scale = deviceScale;
         } else {
             self.position = CGPointFromString([NSString stringWithFormat:@"{%@}",playerDict[@"position"]]);
-            self.scale = [playerDict[@"scale"] floatValue];
+            deviceScale = [playerDict[@"scale"] floatValue];
+            self.scale = deviceScale;
         }
         self.zPosition = [playerDict[@"zPosition"] integerValue];
 
@@ -52,7 +56,10 @@
             NSMutableArray *frames = [NSMutableArray arrayWithCapacity:animationFrames.count];
             for (int i=0; i<animationFrames.count; i++) {
                 SKTexture *animationTex = [atlas textureNamed:animationFrames[i]];
-                if(i == 0) firstFrame = animationTex;
+                if(i == 0) {
+                    firstFrame = animationTex;
+                    playerSize = CGSizeMake(animationTex.size.width * deviceScale, animationTex.size.height * deviceScale);
+                }
                 [frames addObject:animationTex];
             }
             //build the animation for playing instrument
@@ -98,12 +105,7 @@
 -(void) playingAnimation{
     if(playingAction){
         //sprite was bouncing around in size, so make sure we resize ourselves to the firstFrame
-        self.size = firstFrame.size;
-        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
-            self.scale = [playerDict[@"scale-iphone"] floatValue];
-        } else {
-            self.scale = [playerDict[@"scale"] floatValue];
-        }
+        self.size = playerSize;
         [self runAction:playingAction];
     }
 }
@@ -112,12 +114,7 @@
     [self removeAllActions];
     self.texture = offTexture;
     //sprite was bouncing around in size, so make sure we resize ourselves to the off image
-    self.size = offTexture.size;
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
-        self.scale = [playerDict[@"scale-iphone"] floatValue];
-    } else {
-        self.scale = [playerDict[@"scale"] floatValue];
-    }
+    self.size = playerSize;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
