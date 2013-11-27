@@ -66,7 +66,6 @@
     [randomThrowTimer invalidate];
     //throw at a random time from now but at least 10 more seconds
     int nextThrow = arc4random_uniform(20) + 10;
-    nextThrow = 1;
     randomThrowTimer = [NSTimer scheduledTimerWithTimeInterval:nextThrow target:self selector:@selector(throwSnowball) userInfo:nil repeats:NO];
 }
 

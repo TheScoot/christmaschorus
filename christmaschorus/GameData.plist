@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>debugmode</key>
-	<true/>
+	<false/>
 	<key>chorus</key>
 	<array>
 		<dict>
