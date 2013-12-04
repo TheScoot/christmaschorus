@@ -12,6 +12,7 @@
 @implementation CCSplashScreen{
     CCMyScene *mainScene;
     float deviceScale;
+    AVAudioPlayer *avPlayer;
 }
 
 -(id)initWithSize:(CGSize)size {
@@ -21,6 +22,17 @@
         } else {
             deviceScale = 1.0f;
         }
+
+//        NSError* err;
+//        //Initialize our player
+//        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"introtrack" ofType:@"aif"];
+//        avPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
+//        if( err ){
+//            //bail!
+//            NSLog(@"Failed with reason: %@", [err localizedDescription]);
+//        } else {
+//            [avPlayer prepareToPlay];
+//        }
         
         //get the coordinates of the scene the same as all the sprites
         self.anchorPoint = CGPointMake(0.5,0.5);
@@ -80,10 +92,20 @@
         [background addChild:title];
         
         mainScene = [[CCMyScene alloc] initWithSize:self.size];
+        
+
     }
     
     return self;
 }
+
+//-(void) willMoveFromView:(SKView *)view{
+//    [avPlayer stop];
+//}
+//
+//-(void) didMoveToView:(SKView *)view{
+//    [avPlayer play];
+//}
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     SKTransition *reveal = [SKTransition fadeWithDuration:2.0];

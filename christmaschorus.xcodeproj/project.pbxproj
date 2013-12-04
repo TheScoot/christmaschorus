@@ -99,6 +99,7 @@
 		D21981CB18452336000F67EF /* blinking.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blinking.atlas; sourceTree = "<group>"; };
 		D21981CD18455848000F67EF /* SKSpriteNode+debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+debug.h"; sourceTree = "<group>"; };
 		D21981CE18455848000F67EF /* SKSpriteNode+debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+debug.m"; sourceTree = "<group>"; };
+		D2198231184C47F6000F67EF /* introtrack.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = introtrack.aif; sourceTree = "<group>"; };
 		D290A5E318334EC600BDA71F /* snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = snowing.sks; sourceTree = "<group>"; };
 		D290A5E71833502A00BDA71F /* snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowflake.png; sourceTree = "<group>"; };
 		D290A5F1183B2E0400BDA71F /* CCSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSplashScreen.h; sourceTree = "<group>"; };
@@ -234,6 +235,7 @@
 		4AC3952F1831B8BC009991D8 /* tracks */ = {
 			isa = PBXGroup;
 			children = (
+				D2198231184C47F6000F67EF /* introtrack.aif */,
 				4AC395301831B8D7009991D8 /* drummer.aif */,
 				4AC395311831B8D7009991D8 /* guitar.aif */,
 				4AC395321831B8D7009991D8 /* piano.aif */,
