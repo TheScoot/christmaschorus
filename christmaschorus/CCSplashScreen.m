@@ -99,13 +99,13 @@
     return self;
 }
 
-//-(void) willMoveFromView:(SKView *)view{
-//    [avPlayer stop];
-//}
-//
-//-(void) didMoveToView:(SKView *)view{
-//    [avPlayer play];
-//}
+-(void) willMoveFromView:(SKView *)view{
+    [avPlayer stop];
+}
+
+-(void) didMoveToView:(SKView *)view{
+    [avPlayer play];
+}
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     SKTransition *reveal = [SKTransition fadeWithDuration:2.0];
