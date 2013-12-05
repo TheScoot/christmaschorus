@@ -105,6 +105,7 @@
 
 -(void) didMoveToView:(SKView *)view{
     [avPlayer play];
+    avPlayer.numberOfLoops = -1;
 }
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

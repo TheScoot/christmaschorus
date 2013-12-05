@@ -88,6 +88,7 @@
 
 -(void) startPlaying{
     [avPlayer play];
+    avPlayer.numberOfLoops = -1;
     [self playingAnimation];
     [avPlayer setVolume:1.0];
 }
