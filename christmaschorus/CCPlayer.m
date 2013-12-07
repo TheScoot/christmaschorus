@@ -76,7 +76,7 @@
     NSError* err;
 
     //Initialize our player
-    resourcePath = [[NSBundle mainBundle] pathForResource:instrument ofType:@"aif"];
+    resourcePath = [[NSBundle mainBundle] pathForResource:instrument ofType:@"m4a"];
     avPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
     if( err ){
         //bail!

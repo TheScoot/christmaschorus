@@ -25,7 +25,7 @@
 
         NSError* err;
         //Initialize our player
-        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"introtrack" ofType:@"aif"];
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"introtrack" ofType:@"m4a"];
         avPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: [NSURL fileURLWithPath:resourcePath] error:&err];
         if( err ){
             //bail!
@@ -79,12 +79,12 @@
         [santa runAction:layingAction];
 
         SKSpriteNode *titleCardTop = [SKSpriteNode spriteNodeWithImageNamed:@"titletop"];
-        titleCardTop.position = CGPointMake(CGRectGetMidX(self.frame), (santa.frame.size.height / 2) + 100);
+        titleCardTop.position = CGPointMake(CGRectGetMidX(self.frame), (santa.frame.size.height / 2) + 80);
         [title addChild:titleCardTop];
         titleCardTop.zPosition = 1;
         
         SKSpriteNode *titleCardBottom = [SKSpriteNode spriteNodeWithImageNamed:@"titlebottom"];
-        titleCardBottom.position = CGPointMake(CGRectGetMidX(self.frame), -(santa.frame.size.height / 2) - 100);
+        titleCardBottom.position = CGPointMake(CGRectGetMidX(self.frame), -(santa.frame.size.height / 2) - 120);
         [title addChild:titleCardBottom];
         titleCardBottom.zPosition = 1;
         
